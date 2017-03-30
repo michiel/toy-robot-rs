@@ -1,0 +1,18 @@
+use super::{Direction, Command};
+
+number -> i64
+	= n:$([0-9]+) { n.parse().unwrap() }
+
+pub direction -> Direction
+ = "NORTH" { Direction::North }
+ / "SOUTH" { Direction::South }
+ / "EAST" { Direction::East }
+ / "WEST" { Direction::West }
+
+pub command -> Command
+	= "MOVE" { Command::Move }
+  / "LEFT" { Command::Left }
+  / "RIGHT" { Command::Right }
+  / "REPORT" { Command::Report }
+  / "PLACE " x:number "," + y:number "," + dir:direction { Command::Place(x, y, dir) }
+
