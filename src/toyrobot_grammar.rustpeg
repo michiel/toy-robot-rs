@@ -1,7 +1,7 @@
 use super::{Direction, Command};
 
 number -> i64
-	= n:$([0-9]+) { n.parse().unwrap() }
+ = n:$([0-9]+) { n.parse().unwrap() }
 
 pub direction -> Direction
  = "NORTH" { Direction::North }
@@ -10,7 +10,7 @@ pub direction -> Direction
  / "WEST" { Direction::West }
 
 pub command -> Command
-	= "MOVE" { Command::Move }
+  = "MOVE" { Command::Move }
   / "LEFT" { Command::Left }
   / "RIGHT" { Command::Right }
   / "REPORT" { Command::Report }

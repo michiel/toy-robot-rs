@@ -29,9 +29,27 @@ pub fn read_command(s: &str) -> Result<Command, CommandParseError> {
     match toyrobot_grammar::command(s) {
         Ok(command) => Ok(command),
         Err(_) => {
-            Err(CommandParseError::InvalidCommand(format!("ERROR :Invalid command : {:?}", s)))
+            Err(CommandParseError::InvalidCommand(
+                format!("ERROR :Invalid command : {:?}", s),
+            ))
         }
     }
+}
+
+pub struct Robot {}
+
+pub struct Board {}
+
+pub enum SimulationState {
+    Uninitialized,
+    Running,
+    Completed,
+}
+
+pub struct Simulation {
+    state: SimulationState,
+    board: Board,
+    robot: Robot,
 }
 
 fn main() {
